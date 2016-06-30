@@ -4,6 +4,7 @@
 
 receiver长时间（可能7*24小时）运行在executor。 每个receiver负责一个 input DStream (例如 一个 读取Kafka消息的input stream)。 每个receiver， 加上input DStream会占用一个core/slot.
 
+注：每个节点的资源会被抽象成若干个slot，由于一个Task占用一个slot，因此slot数目可看成是最多同时运行的Task数目。如果一个Job的Task数目非常多，限于slot数目有限，可能需要运行若干轮。
 
 ## input DStream
 
