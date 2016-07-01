@@ -36,4 +36,11 @@ partitions的设计目的有多个.最根本原因是kafka基于文件存储.通
 如果你配置你的消费者只使用8个线程， 则6个线程个负责一个分区，2个线程各负责2个分区
 
 
+## kafka 并行读取
 
+<!--language:python-->
+
+    numStreams = 5
+    kafkaStreams = [KafkaUtils.createStream(...) for _ in range (numStreams)]
+    unifiedStream = streamingContext.union(*kafkaStreams)
+    unifiedStream.pprint()
